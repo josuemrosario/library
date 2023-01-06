@@ -1,0 +1,88 @@
+Playlist Test Driven Laravel
+https://www.youtube.com/watch?v=0Rjsuw1ScXg&list=PLpzy7FIRqpGAbkfdxo1MwOS9xjG3O3z1y
+
+parei no minuto 19:58
+
+
+Test Driven laravel - e01 -  Introduction, PHPUnit Setup & Books Test Part 1
+=============================================================================
+
+01 - Create the project
+laravel new library
+
+02  Setup Git repositry
+git init
+git commit -m "initial commit"
+
+
+03 - Create and configure Database
+
+CREATE DATABASE library;
+
+.env file
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=library
+DB_USERNAME=root
+DB_PASSWORD=
+
+
+phpunit.xml file configuration
+
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="BCRYPT_ROUNDS" value="4"/>
+        <env name="CACHE_DRIVER" value="array"/>
+        <!-- <env name="DB_CONNECTION" value="sqlite"/> -->
+        <!-- <env name="DB_DATABASE" value=":memory:"/> -->
+        <env name="MAIL_MAILER" value="array"/>
+        <env name="QUEUE_CONNECTION" value="sync"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="TELESCOPE_ENABLED" value="false"/>
+        
+        <!-- minuto 5:57 -->
+        <env name="DB_CONNECTION" value="mysql"/>
+        <env name="DB_DATABASE" value=":memory:"/>
+    </php>
+
+
+8:26 - Create assertion tests
+===========
+
+03 - Create assertion tests file
+
+- Create a new test/feature file
+php artisan make:test BookCreationTest
+
+assertCount -> OK if an array have the same number of elements
+
+03 - Run tests
+php artisan config:clear
+php artisan test
+
+04 - Create Class Controller
+php artisan make:controller BooksController
+
+05 - Create a model with a migration
+php artisan make:model Book -m
+
+
+07 - Create the database
+
+use RefreshDatabase; -> Creates a brand new database
+
+
+protected $guarded = [];  ---> Disable mass assigment
+
+
+rodar um teste especifico
+php artisan test --filter test_an_author_is_required
+
+
+
+
+
+
+
